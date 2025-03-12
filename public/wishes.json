@@ -1,0 +1,5 @@
+[
+    {"wishText": "item 1!", "isComplete": false},
+    {"wishText": "item 2", "isComplete": true},
+    {"wishText": "item 3", "isComplete": false}
+]

@@ -1,0 +1,18 @@
+<div *ngIf="visibleItems.length === 0; then noItems"></div>
+
+  <ng-template #noItems>
+    There are no items to display
+  </ng-template>
+
+  <ul class="wish-list" *ngIf="visibleItems.length>0">
+    <li *ngFor="let item of visibleItems; index as i" class="d-flex justify-between">
+      <div class="form-check">
+        <label class="form-check-label" [ngClass]="item.isComplete ? 'strike-out' : ''">
+          <input class="checkbox" type="checkbox" [checked]="item.isComplete" [attr.data-index]="i" (click)="toggle(item)"> {{item.wishText}}
+        </label>
+      </div>
+      <div>
+        <button type="button" class="btn-close" (click)="removeWish(item)"></button>
+      </div>
+    </li>
+  </ul>
