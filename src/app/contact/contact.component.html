@@ -1,0 +1,21 @@
+<form class="container p-5" [formGroup]="contactForm" (ngSubmit)="submitform($event)">
+    <div class="mb-3">
+        <label class="form-label">your name</label>
+        <input type="text" class="form-control" formControlName="SenderName">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">your email address</label>
+        <input type="email" class="form-control" formControlName="SenderEmail">
+        <div *ngIf="contactForm.get('SenderEmail')?.invalid && (contactForm.get('SenderEmail')?.dirty || contactForm.get('SenderEmail')?.touched)">
+            <small class="text-danger" *ngIf="contactForm.get('SenderEmail')?.hasError('required')">This field is required</small>
+            <small class="text-danger" *ngIf="contactForm.get('SenderEmail')?.hasError('email')">Enter correct email format</small>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea class="form-control" rows="3" formControlName="SenderMessage"></textarea>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
+    </div>
+</form>
